@@ -164,12 +164,13 @@ export const loginWithGmail = asyncHandler(async(req, res, next) => {
         return payload;
     }
     const {email, email_verified, picture, name} = await verify()
-    const user = await userModel.findOne({email})
+    let user = await userModel.findOne({email})
     if (!user) {
         user = await dbService.create({
             model: userModel, 
             query: {
-                name,
+                fName: name.split(" ")[0],
+                lName: name.split(" ")[1],
                 email,
                 confirmed: email_verified,
                 image: picture,
@@ -178,7 +179,9 @@ export const loginWithGmail = asyncHandler(async(req, res, next) => {
         })
     }
     if (user.provider != providerTypes.google) {
-        return next(new AppError("Please login with in system"))
+        return next(new AppError(
+            "This account is registered with another provider, please login using system credentials", 401
+        ))
     }
 
     // generate token
@@ -186,12 +189,12 @@ export const loginWithGmail = asyncHandler(async(req, res, next) => {
         payload: {email, id: user._id}, 
         SIGNETURE: 
         user.role == roleTypes.user ? 
-        process.env.SIGNETURE_KEY_USER : 
-        process.env.SIGNETURE_KEY_ADMIN,
+        process.env.ACCESS_SIGNETURE_USER : 
+        process.env.ACCESS_SIGNETURE_ADMIN,
         option: {expiresIn: "1d"}
     })
 
-    return res.status(201).json({msg: "Done", Token : access_token})
+    return res.status(201).json({msg: "LogIn successfully", Token : {access_token}})
 })
 
 //---------------------------------------------------------------------------------------------------------------
