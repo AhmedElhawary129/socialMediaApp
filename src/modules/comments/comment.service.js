@@ -35,7 +35,7 @@ export const createComment = asyncHandler(async(req, res, next) => {
 
     if (req.file) {
             const {secure_url, public_id} =  await cloudinary.uploader.upload(req.file.path, {
-                folder: "socialMediaApp/comments/attachments"
+                folder: `socialMediaApp/comments/${req.user._id}/attachments`
             })
         req.body.commentAttachment = {secure_url, public_id}
     }
@@ -80,7 +80,7 @@ export const updateComment = asyncHandler(async(req, res, next) => {
     if(req.file) {
         await cloudinary.uploader.destroy(comment.commentAttachment.public_id)
         const {secure_url, public_id} =  await cloudinary.uploader.upload(req.file.path, {
-            folder: "socialMediaApp/comments/attachments"
+            folder: `socialMediaApp/comments/${req.user._id}/attachments`
         })
         comment.commentAttachment = {secure_url, public_id}
     }

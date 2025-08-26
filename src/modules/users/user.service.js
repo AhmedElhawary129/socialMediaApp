@@ -43,13 +43,16 @@ export const signUp = asyncHandler(async(req, res, next) => {
 
 //---------------------------------------------------------------------------------------------------------------
 
-// upload profile image
+// upload or update profile image
 export const uploadProfileImage = asyncHandler(async(req, res, next) => {
     if (!req.file) {
         return next(new AppError("Please upload an image", 400))
     }
+    if (req.user?.profileImage?.public_id) {
+        await cloudinary.uploader.destroy(req.user.profileImage.public_id)
+    }
     const {public_id, secure_url} = await cloudinary.uploader.upload(req.file.path, {
-        folder: "socialMediaApp/users/profileImage"
+        folder: `socialMediaApp/users/${req.user._id}/profileImage`
     })
     await dbService.updateOne({
         model: userModel, 
@@ -61,13 +64,17 @@ export const uploadProfileImage = asyncHandler(async(req, res, next) => {
 
 //---------------------------------------------------------------------------------------------------------------
 
-// upload cover image
+// upload or update cover image
 export const uploadCoverImage = asyncHandler(async(req, res, next) => {
     if (!req.file) {
         return next(new AppError("Please upload an image", 400))
     }
+
+    if (req.user?.coverImage?.public_id) {
+        await cloudinary.uploader.destroy(req.user.coverImage.public_id)
+    }
     const {public_id, secure_url} = await cloudinary.uploader.upload(req.file.path, {
-        folder: "socialMediaApp/users/coverImage"
+        folder: `socialMediaApp/users/${req.user._id}/coverImage`
     })
     await dbService.updateOne({
         model: userModel, 
@@ -213,7 +220,7 @@ export const refreshToken = asyncHandler(async(req, res, next) => {
         process.env.ACCESS_SIGNETURE_ADMIN,
         option: {expiresIn: "1d"}
     })
-    return res.status(201).json({msg: "Token refresed successfully", Token: {access_token}})
+    return res.status(201).json({msg: "Token refreshed successfully", Token: {access_token}})
 })
 
 //---------------------------------------------------------------------------------------------------------------
@@ -292,44 +299,6 @@ export const updateProfile = asyncHandler(async(req, res, next) => {
         return next(new AppError("User not found or deleted", 404))
     }
     return res.status(201).json({msg: "Profile updated successfully", user})
-})
-
-//---------------------------------------------------------------------------------------------------------------
-
-// update profile image
-export const updateProfileImage = asyncHandler(async(req, res, next) => {
-    if (!req.file) {
-        return next(new AppError("Please upload an image", 400))
-    }
-    await cloudinary.uploader.destroy(req.user.profileImage.public_id)
-    const {public_id, secure_url} = await cloudinary.uploader.upload(req.file.path, {
-        folder: "socialMediaApp/users/profileImage"
-    })
-    await dbService.updateOne({
-        model: userModel, 
-        filter: {_id: req.user._id}, 
-        update: {profileImage: {public_id, secure_url}}
-    })
-    return res.status(201).json({msg: "Profile image updated successfully"})
-})
-
-//---------------------------------------------------------------------------------------------------------------
-
-// update cover image
-export const updateCoverImage = asyncHandler(async(req, res, next) => {
-    if (!req.file) {
-        return next(new AppError("Please upload an image", 400))
-    }
-    await cloudinary.uploader.destroy(req.user.coverImage.public_id)
-    const {public_id, secure_url} = await cloudinary.uploader.upload(req.file.path, {
-        folder: "socialMediaApp/users/coverImage"
-    })
-    await dbService.updateOne({
-        model: userModel, 
-        filter: {_id: req.user._id}, 
-        update: {coverImage: {public_id, secure_url}}
-    })
-    return res.status(201).json({msg: "Cover image updated successfully"})
 })
 
 //---------------------------------------------------------------------------------------------------------------
