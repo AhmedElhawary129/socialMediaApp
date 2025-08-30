@@ -153,7 +153,15 @@ export const logIn = asyncHandler(async(req, res, next) => {
         process.env.REFRESH_SIGNETURE_ADMIN,
         option: {expiresIn: "1w"}
     })
-    return res.status(201).json({message: "LogIn successfully", data: {access_token, refresh_token}})
+
+    let prefix;
+    if (user.role == roleTypes.admin) {
+        prefix = process.env.PREFIX_TOKEN_ADMIN
+    }else if (user.role == roleTypes.user) {
+        prefix = process.env.PREFIX_TOKEN_USER
+    }
+
+    return res.status(201).json({message: "LogIn successfully", Tokens: {access_token, refresh_token}, prefix})
 })
 
 //---------------------------------------------------------------------------------------------------------------
