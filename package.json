@@ -1,8 +1,11 @@
 {
   "name": "socialmediaapp",
-  "version": "22.17.0",
+  "version": "0.0.1",
   "main": "index.js",
   "type": "module",
+  "engines": {
+    "node": ">=22.19.0"
+  },
   "scripts": {
     "start": "nodemon index.js",
     "dev": "node --watch index.js",
@@ -10,7 +13,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "description": "",
   "dependencies": {
     "bcrypt": "^6.0.0",

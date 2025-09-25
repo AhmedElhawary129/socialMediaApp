@@ -26,9 +26,6 @@ const userSchema = new mongoose.Schema({
     },
     password: {
         type: String,
-        required: function(data){
-            return data.provider == providerTypes.google ? false : true
-        },
         minLength: 8,
         trim: true
     },
