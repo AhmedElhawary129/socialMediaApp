@@ -1,4 +1,4 @@
-# Social Media API (Node.js · Express · MongoDB)
+# Social Media Application (Node.js · Express · MongoDB)
 
 [![CI](https://github.com/AhmedElhawary129/socialMediaApp/actions/workflows/ci.yml/badge.svg)](https://github.com/AhmedElhawary129/socialMediaApp/actions/workflows/ci.yml)
 ![Node](https://img.shields.io/badge/Node-22%2B-339933?logo=node.js&logoColor=white)
