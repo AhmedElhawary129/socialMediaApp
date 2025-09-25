@@ -86,30 +86,44 @@ npm start          # nodemon (if configured)
 ## Environment Variables
 
 Use `config/.env.example` as your template and keep real secrets only in `config/.env`.  
-**The keys below match your project exactly (1:1).**
 
 ```env
+# -------- Server --------
 PORT="3000"
+MODE=
+
+# -------- Database --------
 URI_CONNECTION="mongodb://127.0.0.1:27017/socialApp"
-SALT_ROUNDS="12"
+
+# -------- JWT / Auth --------
 SECRET_KEY="CHANGE_ME"
 ACCESS_SIGNATURE_USER="CHANGE_ME"
 ACCESS_SIGNATURE_ADMIN="CHANGE_ME"
 REFRESH_SIGNATURE_USER="CHANGE_ME"
 REFRESH_SIGNATURE_ADMIN="CHANGE_ME"
-EMAIL="your_email@example.com"
-PASSWORD="your_app_password"
-MODE="DEV"
 PREFIX_TOKEN_ADMIN=
 PREFIX_TOKEN_USER=
+
+# -------- Hashing --------
+SALT_ROUNDS="12"
+
+# -------- Email (Nodemailer) --------
+EMAIL="your_email@example.com"
+PASSWORD="your_app_password"
+
+# -------- Google OAuth --------
 CLIENT_ID="your_google_client_id"
+
+# -------- Cloudinary --------
 CLOUD_NAME="your_cloud_name"
 API_KEY="your_cloud_api_key"
 API_SECRET="your_cloud_api_secret"
 ```
 
-**.gitignore (ensure real env is ignored)**
+**.gitignore**
+Ensure `.gitignore` excludes real env files:
 ```gitignore
+# Environment
 config/.env
 config/*.env
 *.env
