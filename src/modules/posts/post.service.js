@@ -14,7 +14,7 @@ if (req.files?.length) {
         const attachments = [];
         for (const file of req.files) {
             const {public_id, secure_url} = await cloudinary.uploader.upload(file.path, {
-                folder: "socialMediaApp/posts/attachments"
+                folder: `socialMediaApp/posts/${req.user._id}/attachments`
             })
             attachments.push({secure_url, public_id})
         }
@@ -49,7 +49,7 @@ export const updatePost = asyncHandler(async(req, res, next) => {
         const attachments = [];
         for (const file of req.files) {
             const {public_id, secure_url} = await cloudinary.uploader.upload(file.path, {
-                folder: "socialMediaApp/posts/attachments"
+                folder: `socialMediaApp/posts/${req.user._id}/attachments`
             })
             attachments.push({secure_url, public_id})
         }

@@ -97,6 +97,35 @@
 					"response": []
 				},
 				{
+					"name": "logInWithGmail",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idToken\": \"eyJhbGciOiJSUzI1NiIsImtpZCI6IjE0OTljMTU0Y2NjOGEyNWUyNGQ4ZGU4YjFhOWY4NDVhZWZiNmYzY2EiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20iLCJhenAiOiI3NTkxNTgyMTc2Ni1lNWN1b3MwMGEwbmczYjJ2cDg2MzdhMXFydjVrdjRpMS5hcHBzLmdvb2dsZXVzZXJjb250ZW50LmNvbSIsImF1ZCI6Ijc1OTE1ODIxNzY2LWU1Y3VvczAwYTBuZzNiMnZwODYzN2ExcXJ2NWt2NGkxLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwic3ViIjoiMTE1MDI3NTI0ODc5NzIwNzYxNjczIiwiZW1haWwiOiJhaG1lZGVsaGF3YXJ5YWUxMjlAZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsIm5iZiI6MTc1NjE5NjI3NywibmFtZSI6IkFobWVkIEVsaGF3YXJ5IiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0tVcm5kQ1E3cnM4VU9MVmg1Y3RqRkN3Yjl1dVBPaE9sbTM0eVQ4NG5NdDMyb1hRU1k1PXM5Ni1jIiwiZ2l2ZW5fbmFtZSI6IkFobWVkIiwiZmFtaWx5X25hbWUiOiJFbGhhd2FyeSIsImlhdCI6MTc1NjE5NjU3NywiZXhwIjoxNzU2MjAwMTc3LCJqdGkiOiJkOWFhNWY5M2JkODc3MzYxYzg2ZjliMWJjMmVjZjczMzk2MzUzMTU4In0.OMX8tRR66jXED951Dz1x8zFW1P3wxXip04OFbmSIbONAgqw5xw8kaWYrawA6iJW_esaaY6k_28_MeJG7_4BptNLIrRn7TqHtU9s02k2FRfGhDLWahyL6Cub6mIYooB2Il18asA5ZUvMmoJl_wIKbexMXuq33U3_w-v-_OWfcY2IDRgPXegNKe90ISrmalRxw77N2zN0psNpirCNPTQdRuqIT0KgQ8_9PFv6s3lzacsutgVh57NUpE5DcMBVa_t0fpmSupNBy7q4pqqWnSL-r_M3qHXLWC0SOSwecWdudjXNsovtNLWAQmC-4HODiOUCUhPzFy0arSDwX21-9VDldwg\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/users/loginWithGmail",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"loginWithGmail"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "updateProfile",
 					"request": {
 						"method": "PATCH",
@@ -465,12 +494,7 @@
 						],
 						"body": {
 							"mode": "formdata",
-							"formdata": [],
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+							"formdata": []
 						},
 						"url": {
 							"raw": "http://localhost:3000/users/remove/68ac065fcdb050689d7b08c9",
@@ -567,7 +591,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFobWVkZWxoYXdhcnlhZTEyOUBnbWFpbC5jb20iLCJpZCI6IjY4YWMwNjVmY2RiMDUwNjg5ZDdiMDhjOSIsImlhdCI6MTc1NjEyMDUzOCwiZXhwIjoxNzU2MjA2OTM4fQ.jqfDPU56B64WGRk8BNSHmdO54FxtwYaM3vJvsoPLu7k",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFobWVkbWVkb28xMjkzQGdtYWlsLmNvbSIsImlkIjoiNjhhYzAzMjg3NmNjZGI5ZDBmOTI5MjliIiwiaWF0IjoxNzU2MjI0OTgwLCJleHAiOjE3NTYzMTEzODB9.f1WdrZD5hT86B-NqftVXwlgre9hrneoWF17U5w3nByQ",
 								"type": "text"
 							}
 						],
@@ -577,7 +601,7 @@
 								{
 									"key": "profileImage",
 									"type": "file",
-									"src": "/G:/Ahmed/صور معدلة/images1.jpeg"
+									"src": "/G:/Ahmed/صور معدلة/images.jpeg"
 								}
 							]
 						},
@@ -603,7 +627,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFobWVkbWVkb28xMjkzQGdtYWlsLmNvbSIsImlkIjoiNjhhYzAzMjg3NmNjZGI5ZDBmOTI5MjliIiwiaWF0IjoxNzU2MTAzODI2LCJleHAiOjE3NTYxOTAyMjZ9.izK4ijLRVG-St15aKiSh7ciYi1hTDH9VTh2e5B_4-44",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFobWVkbWVkb28xMjkzQGdtYWlsLmNvbSIsImlkIjoiNjhhYzAzMjg3NmNjZGI5ZDBmOTI5MjliIiwiaWF0IjoxNzU2MjI0OTgwLCJleHAiOjE3NTYzMTEzODB9.f1WdrZD5hT86B-NqftVXwlgre9hrneoWF17U5w3nByQ",
 								"type": "text"
 							}
 						],
@@ -627,78 +651,6 @@
 							"path": [
 								"users",
 								"uploadCoverImage"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "updateProfileImage",
-					"request": {
-						"method": "PATCH",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFobWVkbWVkb28xMjkzQGdtYWlsLmNvbSIsImlkIjoiNjhhYzAzMjg3NmNjZGI5ZDBmOTI5MjliIiwiaWF0IjoxNzU2MTA5MDgxLCJleHAiOjE3NTYxOTU0ODF9.Ty7WOIwc7MT2IGjOZJJdWWBSSp2GsZw1Ihl4SAdW5Mk",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "profileImage",
-									"type": "file",
-									"src": "/G:/Ahmed/صور معدلة/download.jpeg"
-								}
-							]
-						},
-						"url": {
-							"raw": "http://localhost:3000/users/updateProfileImage",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"users",
-								"updateProfileImage"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "updateCoverImage",
-					"request": {
-						"method": "PATCH",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFobWVkbWVkb28xMjkzQGdtYWlsLmNvbSIsImlkIjoiNjhhYzAzMjg3NmNjZGI5ZDBmOTI5MjliIiwiaWF0IjoxNzU2MTA5MDgxLCJleHAiOjE3NTYxOTU0ODF9.Ty7WOIwc7MT2IGjOZJJdWWBSSp2GsZw1Ihl4SAdW5Mk",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "coverImage",
-									"type": "file",
-									"src": "/G:/Ahmed/صور معدلة/download.jpeg"
-								}
-							]
-						},
-						"url": {
-							"raw": "http://localhost:3000/users/updateCoverImage",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"users",
-								"updateCoverImage"
 							]
 						}
 					},

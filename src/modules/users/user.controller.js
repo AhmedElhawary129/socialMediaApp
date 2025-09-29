@@ -43,20 +43,6 @@ userRouter.patch("/updateProfile",
     US.updateProfile
 );
 
-userRouter.patch("/updateProfileImage", 
-    multerHost(fileTypes.image).single("profileImage"),
-    validation(UV.uploadImageSchema), 
-    authentication, 
-    US.updateProfileImage
-);
-
-userRouter.patch("/updateCoverImage", 
-    multerHost(fileTypes.image).single("coverImage"),
-    validation(UV.uploadImageSchema), 
-    authentication, 
-    US.updateCoverImage
-);
-
 userRouter.delete("/deleteProfileImage", authentication, US.deleteProfileImage);
 userRouter.delete("/deleteCoverImage", authentication, US.deleteCoverImage);
 
